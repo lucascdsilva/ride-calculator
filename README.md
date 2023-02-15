@@ -1,5 +1,5 @@
 # Refatorando o seguinte código
-A ideia é refatorar este código para o mesmo proximo possivel para um ambiente de produção.
+A ideia é refatorar este código para o mais próximo possível de um ambiente de produção.
 
 ```javascript
 // calculate ride

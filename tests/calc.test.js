@@ -1,6 +1,6 @@
 const { calc, discount } = require("../calc");
-const { RatesEnum } = require("../src/service/ride/calculator/rate.enum");
-const { Ride } = require("../src/service/ride/ride");
+const { RatesEnum } = require("../src/ride/calculator/rate/rate.enum");
+const { Ride } = require("../src/ride/ride");
 
 
 describe('calc function test', () => {

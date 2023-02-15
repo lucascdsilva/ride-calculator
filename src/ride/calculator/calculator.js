@@ -1,4 +1,4 @@
-const { detect } = require("./rate.detector");
+const { detect } = require("./rate/rate.detector");
 
 const calc = function(ride) {
 

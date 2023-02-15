@@ -1,5 +1,5 @@
-const { Ride } = require("./src/service/ride/ride");
-const Calculator = require("./src/service/ride/calculator/calculator");
+const { Ride } = require("./src/ride/ride");
+const Calculator = require("./src/ride/calculator/calculator");
 
 const calc = function(distance, date) {
    const ride = new Ride(distance, date);

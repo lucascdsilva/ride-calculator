@@ -1,14 +1,15 @@
+const { Ride } = require("../ride");
+const { Rate } = require("./rate/rate");
 const { detect } = require("./rate/rate.detector");
 
 const calc = function(ride) {
-
-    if(typeof ride != 'object' || ride.constructor.name != 'Ride') {
+    if(! ride instanceof Ride) {
         throw new Error('Não possivel calcular,corrida inválida');
     }
 
     const {distance, date} = ride;
     const rate = detect(date);
-    if(typeof rate != 'object' || rate.constructor.name != 'Rate') {
+    if(!rate instanceof Rate) {
         throw new Error('Não possivel calcular, taxa de corrida não encontrada');
     }
 

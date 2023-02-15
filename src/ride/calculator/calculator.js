@@ -4,13 +4,13 @@ const { detect } = require("./rate/rate.detector");
 
 const calc = function(ride) {
     if(! ride instanceof Ride) {
-        throw new Error('Não possivel calcular,corrida inválida');
+        throw new Error('The ride argument is not an instance of Ride');
     }
 
     const {distance, date} = ride;
     const rate = detect(date);
     if(!rate instanceof Rate) {
-        throw new Error('Não possivel calcular, taxa de corrida não encontrada');
+        throw new Error('Could not detect a rate to calculate');
     }
 
     const amount = distance * rate.value; 

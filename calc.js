@@ -7,8 +7,8 @@ const calc = function(distance, date) {
 }
 
 const discount = function(ride, quantityRides = 0) {
-    if(typeof ride != 'object' || ride.constructor.name != 'Ride') {
-        throw new Error('corrida invalida');
+    if(!ride instanceof  Ride) {
+        throw new Error('The ride argument is not an instance of Ride');
     }
 
     return Calculator.discount(ride, quantityRides);

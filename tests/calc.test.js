@@ -37,8 +37,9 @@ describe('discount function tests', () => {
         const numRidesPerformedByCustomer = 10;
         const ride = new Ride(distance, date);
         ride.setAmount(1);
-        
-        expect(discount(ride, numRidesPerformedByCustomer)).toBe(0.9);
+        discount(ride, numRidesPerformedByCustomer);
+
+        expect(ride.getTotal()).toBe(0.9);
     })
 
     test('discount not applied in ride with overnight rate before do 10 rides', () => {
@@ -47,8 +48,9 @@ describe('discount function tests', () => {
         const numRidesPerformedByCustomer = 9;
         const ride = new Ride(distance, date);
         ride.setAmount(1);
-        
-        expect(discount(ride, numRidesPerformedByCustomer)).toBe(1);
+        discount(ride, numRidesPerformedByCustomer);
+
+        expect(ride.getTotal()).toBe(1);
     })
 
     test('discount not applied in ride not overnight rate after do 10 rides', () => {
@@ -57,7 +59,8 @@ describe('discount function tests', () => {
         const numRidesPerformedByCustomer = 10;
         const ride = new Ride(distance, date);
         ride.setAmount(1);
+        discount(ride, numRidesPerformedByCustomer);
 
-        expect(discount(ride, numRidesPerformedByCustomer)).toBe(1);
+        expect(ride.getTotal()).toBe(1);
     })
 })

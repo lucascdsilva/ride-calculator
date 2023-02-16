@@ -17,9 +17,16 @@ function Ride(distance, date) {
         this.amount = amount;
     }
 
-    
+    this.getAmount = function() {
+        return this.amount;
+    }
+
     this.setDiscount = function(discount) {
         this.discount = discount;
+    }
+
+    this.getDiscount = function() {
+        return this.discount;
     }
 
     this.getTotal = function() {

@@ -1,4 +1,5 @@
 const { Ride } = require("../ride");
+const { apply } = require("./discount/discount.chain");
 const { Rate } = require("./rate/rate");
 const { detect } = require("./rate/rate.detector");
 
@@ -21,15 +22,17 @@ const calc = function(ride) {
 
 const discount = function(ride, quantityRides) {
     const {date, amount} = ride;
-    const rate = detect(date);
 
-    ride.setDiscount(0);
-    if(rate.title == 'OVERNIGHT' && quantityRides >= 10) {
-        const discount = amount * 0.1;
-        ride.setDiscount(discount);
+    if(! ride instanceof Ride) {
+        throw new Error('The ride argument is not an instance of Ride');
     }
 
-    return ride.getTotal();
+    if(! Number.isInteger(quantityRides)) {
+        throw new Error('The quantityRides argument is not an integer number');
+    }
+
+    apply({ride, quantityRides});
+    return ride.getDiscount();
 }
 
 module.exports = {calc, discount};

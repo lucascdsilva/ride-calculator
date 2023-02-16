@@ -1,10 +1,9 @@
 const { Rate } = require("../rate");
 
 function OvernightRate() {
-    this.__proto__ = Rate;
     Rate.call(this, OvernightRate.title, 3.9);
 
-    this.active = function (date) {
+    this.match = function (date) {
         return date.getHours() >= 22;
     }
 }

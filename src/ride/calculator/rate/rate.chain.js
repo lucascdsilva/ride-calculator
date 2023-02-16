@@ -10,7 +10,7 @@ const chain = [
 
 function resolve(date) {
     for(const rate of chain) {
-        if(rate.active(date)) return rate;
+        if(rate.match(date)) return rate;
     }
 
     throw new Error('Not found rate');

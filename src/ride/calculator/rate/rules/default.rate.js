@@ -1,10 +1,9 @@
 const { Rate } = require("../rate");
 
 function DefaultRate() {
-    this.__proto__ = Rate;
     Rate.call(this, DefaultRate.title, 2.1);
 
-    this.active = function(date) {
+    this.match = function(date) {
         return true;
     }
 }

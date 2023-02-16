@@ -1,10 +1,9 @@
 const { Rate } = require("../rate");
 
 function SundayRate() {
-    this.__proto__ = Rate;
     Rate.call(this, SundayRate.title, 2.9);
 
-    this.active = function(date) {
+    this.match = function(date) {
         return date.getDay() === 0;
     }
 }

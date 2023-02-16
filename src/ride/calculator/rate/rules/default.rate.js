@@ -1,13 +1,11 @@
-const { Rate } = require("../rate");
+const { Rate } = require('../rate');
 
 function DefaultRate() {
-    Rate.call(this, DefaultRate.title, 2.1);
+  Rate.call(this, DefaultRate.title, 2.1);
 
-    this.match = function(date) {
-        return true;
-    }
+  this.match = () => true;
 }
 
-DefaultRate.title  = 'DEFAULT';
+DefaultRate.title = 'DEFAULT';
 DefaultRate.prototype = Rate.prototype;
-module.exports = {DefaultRate};
+module.exports = { DefaultRate };

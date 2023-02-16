@@ -1,13 +1,11 @@
-const { Rate } = require("../rate");
+const { Rate } = require('../rate');
 
 function SundayRate() {
-    Rate.call(this, SundayRate.title, 2.9);
+  Rate.call(this, SundayRate.title, 2.9);
 
-    this.match = function(date) {
-        return date.getDay() === 0;
-    }
+  this.match = (date) => date.getDay() === 0;
 }
 
 SundayRate.title = 'SUNDAY';
 SundayRate.prototype = Rate.prototype;
-module.exports = {SundayRate};
+module.exports = { SundayRate };

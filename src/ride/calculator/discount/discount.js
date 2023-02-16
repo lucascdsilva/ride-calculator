@@ -1,5 +1,5 @@
 function Discount(title) {
-    this.title = title;
+  this.title = title;
 }
 
-module.exports = {Discount};
+module.exports = { Discount };

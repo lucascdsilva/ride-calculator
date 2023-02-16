@@ -1,26 +1,28 @@
-const { Ride } = require("../../ride");
-const { OvernightAfterNRidesDiscount } = require("./rules/overnight-after-n-rides.discount");
+const { Ride } = require('../../ride');
+const { OvernightAfterNRidesDiscount } = require('./rules/overnight-after-n-rides.discount');
 
 const chain = [
-    new OvernightAfterNRidesDiscount(),
+  new OvernightAfterNRidesDiscount(),
 ];
 
 function apply(criteria) {
-    const {ride} = criteria;
-    let discountTotals = 0;
+  const { ride } = criteria;
 
-    if(! ride instanceof Ride) {
-        throw new Error('ride argument of criteria is not an instance of Ride');
+  if (!(ride instanceof Ride)) {
+    throw new Error('ride argument of criteria is not an instance of Ride');
+  }
+
+  const discountTotals = chain.reduce((total, discountItem) => {
+    let ac = total;
+    if (discountItem.match(criteria)) {
+      ac += discountItem.calc(ride.getAmount());
     }
 
-    for(const discount of chain) {
-        if(discount.match(criteria)) {
-            discountTotals += discount.calc(ride.getAmount());
-        }
-    }
+    return ac;
+  }, 0);
 
-    ride.setDiscount(discountTotals);
-    return discountTotals;
+  ride.setDiscount(discountTotals);
+  return discountTotals;
 }
 
-module.exports = {apply};
+module.exports = { apply };

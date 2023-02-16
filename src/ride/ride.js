@@ -1,37 +1,30 @@
-
 function Ride(distance, date) {
-    if(typeof distance != 'number') {
-        throw new Error('distancia da corrida é invalida');
-    }
-    
-    if(typeof date != 'object' || date.constructor.name != 'Date') {
-        throw new Error('data da corrida é invalida');
-    }
+  if (typeof distance !== 'number') {
+    throw new Error('distancia da corrida é invalida');
+  }
 
-    this.distance = distance;
-    this.date = date;
-    this.amount = 0;
-    this.discount = 0;
+  if (!(date instanceof Date)) {
+    throw new Error('data da corrida é invalida');
+  }
 
-    this.setAmount = function(amount) {
-        this.amount = amount;
-    }
+  this.distance = distance;
+  this.date = date;
+  this.amount = 0;
+  this.discount = 0;
 
-    this.getAmount = function() {
-        return this.amount;
-    }
+  this.getAmount = () => this.amount;
 
-    this.setDiscount = function(discount) {
-        this.discount = discount;
-    }
+  this.setAmount = (amount) => {
+    this.amount = amount;
+  };
 
-    this.getDiscount = function() {
-        return this.discount;
-    }
+  this.setDiscount = (discount) => {
+    this.discount = discount;
+  };
 
-    this.getTotal = function() {
-       return  this.amount - this.discount;
-    }
+  this.getDiscount = () => this.discount;
+
+  this.getTotal = () => this.amount - this.discount;
 }
 
-module.exports = {Ride};
+module.exports = { Ride };

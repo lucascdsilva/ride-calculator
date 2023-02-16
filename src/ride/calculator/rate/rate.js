@@ -1,6 +1,6 @@
 function Rate(title, value) {
-    this.title = title;
-    this.value = value;
+  this.title = title;
+  this.value = value;
 }
 
-module.exports = {Rate};
+module.exports = { Rate };
